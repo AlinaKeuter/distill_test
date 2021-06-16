@@ -1,5 +1,5 @@
 ---
-title: "Mehr von Alina"
+title: "Mehr von AK"
 description: |
   [GitHub](https://github.com/AlinaKeuter)
 ---

@@ -1,7 +1,7 @@
 name: "distill_test"
-title: "Alinas Hausaufgaben"
+title: "AKs Hausaufgaben"
 description: |
-  Alinas Hausaufgaben
+  AKs Hausaufgaben
 output_dir: "_site"
 navbar:
   search: true

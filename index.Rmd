@@ -1,7 +1,7 @@
 ---
-title: "Alinas Hausaufgaben"
+title: "AKs Hausaufgaben"
 description: |
-  Auf dieser Website sind alle bisherigen Hausaufgaben von Alina zu sehen.
+  Auf dieser Website sind alle bisherigen Hausaufgaben von AK im Seminar InfoVisSS2021 zu sehen.
 site: distill::distill_website
 ---
 

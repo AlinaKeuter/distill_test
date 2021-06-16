@@ -2,47 +2,47 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "Mehr von Alina",
+      "title": "Mehr von AK",
       "description": "[GitHub](https://github.com/AlinaKeuter)",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:56:57+02:00"
+      "last_modified": "2021-06-16T12:57:25+02:00"
     },
     {
       "path": "bechdel.html",
       "title": "Bechdeltest",
       "author": [],
       "contents": "\r\n\r\n\r\n# Filme von 1970 bis 2020, wenig Informationen pro Film\r\nraw_bechdel <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/raw_bechdel.csv')\r\n# Filme von 1970 bis 2013, viele Informationen, viele Informationen pro Film\r\n\r\nmovies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv')\r\n\r\n\r\n\r\n\r\n\r\nhcl_palettes(type = \"qualitative\", plot = T, n = 9)\r\n\r\n\r\n\r\nhcl_palettes(\"sequential (single-hue)\", n = 7, plot = TRUE)\r\n\r\n\r\n\r\n\r\n\r\n\r\n#a\r\nmovies %>%\r\n  mutate(binary = recode(binary, `FAIL` = \"durchgefallen\", `PASS` = \"bestanden\")) %>%\r\n  filter(year >= 2000, year <= 2013) %>%\r\n  ggplot(aes(x = year, group = binary, fill = binary))+\r\n  theme_minimal()+\r\n  #theme(legend.box.background = element_rect(fill = NULL ,color = \"black\"),\r\n  #  legend.box.margin = margin(5, 5, 5, 5)) +\r\n  labs(x = NULL,\r\n       y = \"Anzahl der Filme\",\r\n       fill = \"Bechdel-Test\",\r\n       title = \"2009 sind besonders viele Filme im Bechdel-Test durchgefallen\",\r\n       subtitle = \"Anzahl bestandener und durchgefallener Filme zwischen 2000 und 2013 im Histogramm\")+\r\n  scale_fill_manual(values = c(durchgefallen = \"#ee0000\", bestanden = \"#00cd00\")) +\r\ngeom_bar(position = \"dodge\") -> a\r\n\r\n\r\n#b\r\nmovies %>%\r\n  filter(year == \"2009\") -> movies_2009\r\nmovies_2009 %>%\r\n  filter(binary == \"FAIL\") -> fails_2009\r\n\r\nclean_test_2009 <- data.frame(\"category\" = c('notalk', 'nowomen', 'dubious', 'men'),\r\n                   \"amount\" = c(40, 11, 11, 20))\r\n\r\nggplot(clean_test_2009, aes(x=\"\", y=amount, fill=category)) +\r\n      geom_bar(stat=\"identity\", width=1) +\r\n      coord_polar(\"y\", start=0) +\r\n      theme_minimal()+\r\n      geom_text(aes(label = paste0(amount)), position = position_stack(vjust = 0.5)) +\r\n      scale_fill_discrete_qualitative(palette = \"Dark3\") +\r\n      labs(x = NULL, \r\n           y = NULL, fill = NULL, \r\n           title = \"2009 sind Filme größtenteils\\ndurchgefallen, da Frauen\\nnicht sprechen\",\r\n           subtitle = \"Verteilung der Gründe für das Durchfallen\\nim Kreisdiagramm\") -> b\r\n\r\n\r\n#c\r\nmovies_2009 %>%\r\n  mutate(binary = recode(binary, `FAIL` = \"durchgefallen\", `PASS` = \"bestanden\")) %>%\r\n  ggplot(aes(x = binary, y = budget, fill = binary)) +\r\n  theme_minimal()+\r\n  theme(legend.position = \"none\") +\r\n  labs(x = NULL,\r\n       y = \"Budget\",\r\n       fill = \"Bechdel-Test\",\r\n       title = \"2009 ist das Budget der durchgefallenen\\nFilme geringfügig höher als das der\\nFilme, die den Test bestanden haben\",\r\n       subtitle = \"Budget der bestandenen und durchgefallenen\\nFilme im Boxplot\")+\r\n  scale_fill_manual(values = c(durchgefallen = \"#ee0000\", bestanden = \"#00cd00\")) +\r\n  scale_y_continuous(\r\n  limits = c(0, 100000000),\r\n  breaks = c(0, 25000000, 50000000, 75000000,100000000),\r\n  labels = c(\"0\", \"$25M\", \"$50M\", \"$75M\", \"$100M\"))+\r\n  geom_boxplot()  -> c\r\n\r\n\r\n#Alle zusammen\r\na / (b + c)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:57:13+02:00"
+      "last_modified": "2021-06-16T12:57:53+02:00"
     },
     {
       "path": "exercise_02_AK.html",
       "title": "Klima",
       "author": [],
       "contents": "\r\n\r\n\r\ndata %>%\r\nfilter(year >= 2000, year <= 2010) %>%\r\nggplot(aes(x = Mean, y = as.factor(year))) +\r\n  theme_minimal() +\r\n  labs(title = \"Zwischen 2000 und 2010 ist die Durchschnittstemperatur gestiegen\", \r\n       subtitle = \"Durchschnittstemperatur der Jahre 2000 bis 2010 in ridgelines\",\r\n       x = \"Durchschnittliche Temperatur\",\r\n       y = \"Jahr\") +\r\n  geom_density_ridges(bandwidth = 0.05, fill = \"skyblue\")\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:57:20+02:00"
+      "last_modified": "2021-06-16T12:58:01+02:00"
     },
     {
       "path": "exercise3_AK.html",
       "title": "Animation",
       "author": [],
       "contents": "\r\n\r\n\r\nbcr <- gapminder %>% \r\n  filter(continent == \"Europe\") %>% \r\n    ggplot(aes(x = country,y = pop, group = country, fill=country)) +\r\n        geom_tile(aes(y = pop / 2, height = pop), width = 0.9) +\r\n        geom_text(aes(label = country), hjust = \"right\", colour = \"black\", fontface = \"bold\", nudge_y = -100000) +\r\n        geom_text(aes(label = scales::comma(pop)), hjust = \"left\", nudge_y = 100000, colour = \"black\") +\r\n        coord_flip(clip=\"off\") +\r\n        hrbrthemes::theme_ipsum(plot_title_size = 28, subtitle_size = 24, base_size = 20) +\r\n        theme(panel.grid.major.y=element_blank(),\r\n              panel.grid.minor.x=element_blank(),\r\n              legend.position = \"none\",\r\n              plot.margin = margin(1,1,1,2,\"cm\"),\r\n              axis.text.y=element_blank(),\r\n              axis.text.x=element_blank())+\r\n        transition_time(year) +\r\n        ease_aes('cubic-in-out') +\r\n        labs(title='Population growth in european countries between 1952 and 2007',\r\n             subtitle='Population in {round(frame_time,0)}',\r\n             x='European countries',\r\n             y='Population')\r\n\r\nanimate(bcr, nframes = 55, fps = 3, width = 1200, height = 900)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:58:20+02:00"
+      "last_modified": "2021-06-16T12:59:10+02:00"
     },
     {
       "path": "index.html",
-      "title": "Alinas Hausaufgaben",
-      "description": "Auf dieser Website sind alle bisherigen Hausaufgaben von Alina zu sehen.\n",
+      "title": "AKs Hausaufgaben",
+      "description": "Auf dieser Website sind alle bisherigen Hausaufgaben von AK im Seminar InfoVisSS2021 zu sehen.\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:58:23+02:00"
+      "last_modified": "2021-06-16T12:59:13+02:00"
     },
     {
       "path": "netflix.html",
       "title": "Netflix",
       "author": [],
       "contents": "\r\n\r\n\r\n# Anzahl von Filmen und Serien auf Netflix\r\nggplot(netflix_titles, aes(x = type, fill= type)) +\r\n  theme_minimal() +\r\n  labs(title = \"Es gibt mehr Filme als Serien auf Netflix\", \r\n       subtitle = \"Anzahl von Filmen und Serien auf Netflix im Balkendiagramm\",\r\n       x = \"Medientyp\",\r\n       y = \"Häufigkeit\") + \r\n  geom_bar()\r\n\r\n\r\n\r\n\r\n\r\n\r\n# Anzahl von Titeln aus verschiedenen Jahren\r\nggplot(netflix_titles, aes(x = release_year, fill = type)) +\r\n  theme_minimal() +\r\n  labs(title = \"Die meisten Titel auf Netflix wurden nach dem Jahr 2010 veröffentlicht\", \r\n       subtitle = \"Anzahl von Titeln aus verschiedenen Jahren im Histogramm\",\r\n       x = \"Jahr der Veröffentlichung\") + \r\n  geom_histogram()\r\n\r\n\r\n\r\n\r\n\r\n\r\n# Dataframe, der nur Medien aus 2021 beinhaltet\r\nnetflix_2021 <- netflix_titles[netflix_titles$release_year == \"2021\",]\r\n\r\n# Anzahl von Titeln aus dem Jahr 2021\r\nggplot(netflix_2021, aes(y = country, fill = type)) +\r\n  theme_minimal() +\r\n  labs(title = \"Die meisten Titel, die im Jahr 2021 veröffentlicht wurden, stammen aus den USA\", \r\n       subtitle = \"Anzahl von Titeln aus dem Jahr 2021 im Histogramm\",\r\n       x = \"Anzahl der Titel\", \r\n       y = \"Länder\") + \r\n  geom_bar(position = \"dodge\")\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-15T18:58:35+02:00"
+      "last_modified": "2021-06-16T12:59:28+02:00"
     }
   ],
   "collections": []
