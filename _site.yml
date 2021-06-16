@@ -9,6 +9,7 @@ navbar:
     logo:
       image: https://www.rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-White.png
       href: https://www.rstudio.com
+
   right:
     - icon: fa-home
       text: "Home"
@@ -27,8 +28,9 @@ navbar:
           href: exercise_02_AK.html
         - text: "Netflix"
           href: netflix.html
-    - icon: fa-download
-      href: https://github.com/rstudio/distill
     - text: "Mehr"
       href: about.html
+    - icon: fa-refresh
+      href: https://distilltest.netlify.app
+
 output: distill::distill_article
